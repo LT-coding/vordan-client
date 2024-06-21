@@ -48,50 +48,6 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-//    /**
-//     * Send the custom password reset notification.
-//     *
-//     * @param  string  $token
-//     * @return void
-//     */
-//    public function sendPasswordResetNotification($token): void
-//    {
-//        $this->notify(new CustomResetPasswordNotification($token));
-//    }
-//
-//    /**
-//     * Send the custom email verification notification.
-//     *
-//     * @return void
-//     */
-//    public function sendEmailVerificationNotification(): void
-//    {
-//        $this->notify(new CustomVerifyEmailNotification());
-//    }
-
-    /**
-     *
-     * @return Attribute
-     */
-    protected function registered(): Attribute
-    {
-        return Attribute::make(
-            get: fn () => Carbon::parse($this->created_at)->format('d.m.Y')
-        );
-    }
-
-    /**
-     * Check if this user is Account.
-     *
-     * @return Attribute
-     */
-    protected function isAccount(): Attribute
-    {
-        return Attribute::make(
-            get: fn () => $this->hasRole('account')
-        );
-    }
-
     public function account(): HasOne
     {
         return $this->hasOne(Account::class);

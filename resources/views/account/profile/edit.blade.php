@@ -1,13 +1,13 @@
 @extends('adminlte::page')
 
-@section('title', 'Պրոֆիլ')
+@section('title', 'Profile')
 
 @section('content_header')
     <ol class="breadcrumb mb-3">
-        <li class="breadcrumb-item"><a href="/">Գլխավոր</a></li>
-        <li class="breadcrumb-item active">Պրոֆիլ</li>
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active">Profile</li>
     </ol>
-    <h1 class="mb-2">Պրոֆիլ</h1>
+    <h1 class="mb-2">Profile</h1>
 @stop
 
 @section('content')

@@ -30,13 +30,15 @@ class AuthenticatedSessionController extends Controller
 
         $user = Auth::user();
 
-        if ($user->isAccount) {
+        if ($user->account) {
             $request->session()->regenerate();
 
             return redirect()->intended(RouteServiceProvider::HOME);
         }
 
-        return back()->with('error', 'Մուտքանունը կամ գաղտնաբառը սխալ են։');
+        Auth::guard('web')->logout();
+
+        return back()->with('error', 'These credentials do not match our records.');
     }
 
     /**

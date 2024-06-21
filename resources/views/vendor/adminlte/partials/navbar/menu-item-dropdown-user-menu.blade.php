@@ -65,21 +65,21 @@
         @if($profile_url)
             <li>
                 <a href="{{ $profile_url }}" class="dropdown-item">
-                    <i class="fa fa-fw fa-user"></i> Պրոֆիլ
+                    <i class="fa fa-fw fa-user"></i> Profile
                 </a>
             </li>
         @endif
         @if($address_url)
             <li>
                 <a href="{{ $address_url }}" class="dropdown-item">
-                    <i class="fas fa-map-marked-alt"></i> Առաքման հասցեներ
+                    <i class="fas fa-map-marked-alt"></i> Shipping Address
                 </a>
             </li>
         @endif
         <li>
             <a class="dropdown-item"
                href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                <i class="fa fa-fw fa-power-off"></i> Դուրս գալ
+                <i class="fa fa-fw fa-power-off"></i> Logout
             </a>
             <form id="logout-form" action="{{ $logout_url }}" method="POST" style="display: none;">
                 @if(config('adminlte.logout_method'))

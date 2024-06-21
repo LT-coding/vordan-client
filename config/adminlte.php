@@ -300,48 +300,48 @@ return [
 
         // Sidebar items:
         [
-            'text' => 'Գլխավոր',
+            'text' => 'Home',
             'url'  => 'account',
             'icon' => 'fas fa-fw fa-home',
         ],
         [
-            'text'    => 'Պատվերներ',
+            'text'    => 'Orders',
             'icon'    => 'fas fa-shopping-basket',
             'submenu' => [
                 [
-                    'text'    => 'Զամբյուղ',
+                    'text'    => 'Shopping Cart',
                     'url'  => 'account/cart',
                 ],
                 [
-                    'text' => 'Պատվերներ',
+                    'text' => 'Orders',
                     'url'  => 'account/orders',
                 ],
             ],
         ],
         [
-            'text'    => 'Նախընտրելիներ',
+            'text'    => 'Favorites',
             'icon'    => 'fas fa-heart',
             'submenu' => [
                 [
-                    'text'    => 'Նախընտրելի բրենդներ',
+                    'text'    => 'Favorite Brands',
                     'url'  => 'account/favorite-brands',
                 ],
                 [
-                    'text' => 'Նախընտրելի ապրանքներ',
+                    'text' => 'Favorite Products',
                     'url'  => 'account/favorite-products',
                 ],
             ],
         ],
         [
-            'text'    => 'Ֆինանսներ',
+            'text'    => 'Finance',
             'icon'    => 'fas fa-money-check',
             'submenu' => [
                 [
-                    'text'    => 'Վճարման մեթոդներ',
+                    'text'    => 'Payment Methods',
                     'url'  => 'account/payment-methods',
                 ],
                 [
-                    'text' => 'Պատմություն',
+                    'text' => 'Transactions',
                     'url'  => 'account/transactions',
                 ],
             ],
