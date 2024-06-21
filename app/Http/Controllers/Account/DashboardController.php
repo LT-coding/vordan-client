@@ -31,4 +31,9 @@ class DashboardController extends Controller
     {
         return view('account.dashboard');
     }
+
+    public function referral(): View
+    {
+        return view('account.referral');
+    }
 }

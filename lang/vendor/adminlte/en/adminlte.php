@@ -29,5 +29,10 @@ return [
     'verify_if_not_recieved'      => 'If you did not receive the email',
     'verify_request_another'      => 'click here to request another',
     'confirm_password_message'    => 'Please, confirm your password to continue.',
-    'remember_me_hint'            => 'Keep me authenticated'
+    'remember_me_hint'            => 'Keep me authenticated',
+    'address'                     => 'Address',
+    'country'                     => 'Country',
+    'state'                       => 'State',
+    'city'                        => 'City',
+    'zip'                         => 'zip',
 ];

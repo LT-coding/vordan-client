@@ -260,8 +260,8 @@ return [
     'password_reset_url' => 'forgot-password',
     'password_reset_email_url' => '/reset-password',
     'password_email_url' => 'forgot-password',
-    'profile_url' => 'account/profile',
-    'address_url' => 'account/addresses',
+    'profile_url' => '/account/profile',
+    'address_url' => '/account/addresses',
 
     /*
     |--------------------------------------------------------------------------
@@ -310,11 +310,11 @@ return [
             'submenu' => [
                 [
                     'text'    => 'Shopping Cart',
-                    'url'  => 'account/cart',
+                    'url'  => '#',
                 ],
                 [
                     'text' => 'Orders',
-                    'url'  => 'account/orders',
+                    'url'  => '#',
                 ],
             ],
         ],
@@ -324,11 +324,11 @@ return [
             'submenu' => [
                 [
                     'text'    => 'Favorite Brands',
-                    'url'  => 'account/favorite-brands',
+                    'url'  => '#',
                 ],
                 [
                     'text' => 'Favorite Products',
-                    'url'  => 'account/favorite-products',
+                    'url'  => '#',
                 ],
             ],
         ],
@@ -338,11 +338,11 @@ return [
             'submenu' => [
                 [
                     'text'    => 'Payment Methods',
-                    'url'  => 'account/payment-methods',
+                    'url'  => '#',
                 ],
                 [
                     'text' => 'Transactions',
-                    'url'  => 'account/transactions',
+                    'url'  => '#',
                 ],
             ],
         ],

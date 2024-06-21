@@ -28,7 +28,7 @@ class ProfileController extends Controller
     {
         $user = $request->user();
 
-        return view('account.addresses.edit', compact('user'));
+        return view('account.profile.addresses', compact('user'));
     }
 
     /**
@@ -51,7 +51,7 @@ class ProfileController extends Controller
 
     public function saveAddress(AccountAddressRequest $request): RedirectResponse
     {
-        $request->user()->account()->addresses->updateOrCreate($request->validated());
+        $request->user()->account->addresses()->updateOrCreate($request->validated());
 
         return Redirect::route('account.addresses.edit')->with('status', 'Saved successfully!');
     }

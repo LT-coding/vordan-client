@@ -72,7 +72,7 @@
         @if($address_url)
             <li>
                 <a href="{{ $address_url }}" class="dropdown-item">
-                    <i class="fas fa-map-marked-alt"></i> Shipping Address
+                    <i class="fas fa-map-marked-alt"></i> Shipping Addresses
                 </a>
             </li>
         @endif
