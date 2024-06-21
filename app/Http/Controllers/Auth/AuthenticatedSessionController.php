@@ -38,7 +38,9 @@ class AuthenticatedSessionController extends Controller
 
         Auth::guard('web')->logout();
 
-        return back()->with('error', 'These credentials do not match our records.');
+        return back()->withErrors([
+            'login' => 'These credentials do not match our records.',
+        ])->withInput();
     }
 
     /**
