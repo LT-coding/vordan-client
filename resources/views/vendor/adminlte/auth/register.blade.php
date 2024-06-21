@@ -17,9 +17,7 @@
     <form action="{{ $register_url }}" method="post">
         @csrf
 
-        @if(request()->has('referral'))
-            <input type="hidden" name="referral" value="{{ request()->get('referral') }}">
-        @endif
+        <input type="hidden" name="referral" value="{{ $referral }}">
 
         {{-- Name field --}}
         <div class="input-group mb-3">

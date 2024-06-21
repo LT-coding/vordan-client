@@ -4,6 +4,7 @@ return [
 
     'full_name'                   => 'Full name',
     'email'                       => 'Email',
+    'phone'                       => 'Phone Number',
     'password'                    => 'Password',
     'retype_password'             => 'Retype password',
     'remember_me'                 => 'Remember Me',
@@ -25,5 +26,5 @@ return [
     'verify_if_not_recieved'      => 'If you did not receive the email',
     'verify_request_another'      => 'click here to request another',
     'confirm_password_message'    => 'Please, confirm your password to continue.',
-    'remember_me_hint'            => 'Keep me authenticated indefinitely or until I manually logout',
+    'remember_me_hint'            => 'Keep me authenticated'
 ];

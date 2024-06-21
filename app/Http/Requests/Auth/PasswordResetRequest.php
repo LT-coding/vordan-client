@@ -31,17 +31,6 @@ class PasswordResetRequest extends FormRequest
     }
 
     /**
-     * @return array|string[]
-     */
-    public function messages(): array
-    {
-        return [
-            'password.required' => 'Գաղտնաբառ դաշտը պարտադիր է:',
-            'password.confirmed' => 'Գաղտնաբառի հաստատումը և գաղտնաբառը պետք է նույնը լինեն:'
-        ];
-    }
-
-    /**
      * @throws ContainerExceptionInterface
      * @throws NotFoundExceptionInterface
      */

@@ -16,7 +16,7 @@ Route::middleware('guest')->group(function () {
 
     Route::redirect('/login', '/');
 
-    Route::get('register', [RegisteredUserController::class, 'create'])
+    Route::get('register/{referral?}', [RegisteredUserController::class, 'create'])
                 ->name('register');
 
     Route::post('register', [RegisteredUserController::class, 'store'])->name('register');

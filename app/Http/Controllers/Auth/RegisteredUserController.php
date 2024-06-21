@@ -21,9 +21,9 @@ class RegisteredUserController extends Controller
     /**
      * Display the registration view.
      */
-    public function create(): View
+    public function create($referral=null): View
     {
-        return view('auth.register');
+        return view('auth.register', compact('referral'));
     }
 
     /**
@@ -54,11 +54,11 @@ class RegisteredUserController extends Controller
             $rAccount->update(['referral' => $rAccount->referral + 10]);
         }
 
-        try {
+        if ($request->email) {
             $user->sendEmailVerificationNotification();
-        } catch (\Throwable $th) {
-            $user->delete();
-            return back()->with('error', 'Էլ․ հասցեն գոյություն չունի։');
+        } else {
+//            TODO need to verify phone number via sms
+            $user->update(['email_verified_at' => now()]);
         }
 
         event(new Registered($user));

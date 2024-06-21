@@ -19,7 +19,7 @@ class UserRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255'],
             'email' => [Rule::requiredIf(fn () => !$this->phone), 'string', 'email', 'max:255', Rule::unique(User::class)->ignore($this->id)],
-            'phone' => [Rule::requiredIf(fn () => !$this->email)],
+            'phone' => [Rule::requiredIf(fn () => !$this->email), Rule::unique(User::class)->ignore($this->id)],
             'password' => [Rule::requiredIf(fn () => !$this->id), 'confirmed', Rules\Password::defaults(fn () => !$this->id)],
             'referral' => ['nullable'],
         ];
@@ -31,13 +31,8 @@ class UserRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'name.required' => 'Անուն Ազգանուն դաշտը պարտադիր է:',
-            'email.required' => 'էլ․ հասցե կամ հեռախոսահամար դաշտը պարտադիր է:',
-            'phone.required' => 'էլ․ հասցե կամ հեռախոսահամար դաշտը պարտադիր է:',
-            'email.email' => 'էլ․ հասցե դաշտը ճիշտ ձևաչափով չէ:',
-            'email.unique' => 'Նշված էլ․ հասցեով օգտատեր արդեն գրանցված է:',
-            'password.required' => 'Գաղտնաբառ դաշտը պարտադիր է:',
-            'password.confirmed' => 'Գաղտնաբառի հաստատումը և գաղտնաբառը պետք է նույնը լինեն:',
+            'email.required' => 'The email or phone field is required.',
+            'phone.required' => 'The email or phone field is required.',
         ];
     }
 }
