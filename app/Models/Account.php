@@ -19,13 +19,8 @@ class Account extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function address(): HasOne
+    public function addresses(): HasMany
     {
-        return $this->hasOne(AccountAddress::class);
-    }
-
-    public function referrals(): HasMany
-    {
-        return $this->hasMany(Referral::class);
+        return $this->hasMany(AccountAddress::class);
     }
 }

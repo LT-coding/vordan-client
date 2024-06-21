@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Account;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Account\User\ProfilePasswordUpdateRequest;
-use App\Http\Requests\Account\User\ProfileUpdateRequest;
+use App\Http\Requests\Account\User\AccountAddressRequest;
+use App\Http\Requests\Account\User\PasswordUpdateRequest;
+use App\Http\Requests\Account\User\AccountRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -23,22 +24,42 @@ class ProfileController extends Controller
         return view('account.profile.edit', compact('user'));
     }
 
+    public function editAddresses(Request $request): View
+    {
+        $user = $request->user();
+
+        return view('account.addresses.edit', compact('user'));
+    }
+
     /**
      * Update the user's profile information.
      */
-    public function update(ProfileUpdateRequest $request): RedirectResponse
+    public function update(AccountRequest $request): RedirectResponse
     {
         $request->user()->fill($request->validated());
 
         $request->user()->save();
 
-        return Redirect::route('account.profile.edit')->with('status', 'Տվյալները հաջողությամբ պահպանված են');
+        $request->user()->account()->update([
+            'name' => $request->name,
+            'date_of_birth' => $request->date_of_birth,
+            'gender' => $request->gender,
+        ]);
+
+        return Redirect::route('account.profile.edit')->with('status', 'Saved successfully!');
+    }
+
+    public function saveAddress(AccountAddressRequest $request): RedirectResponse
+    {
+        $request->user()->account()->addresses->updateOrCreate($request->validated());
+
+        return Redirect::route('account.addresses.edit')->with('status', 'Saved successfully!');
     }
 
     /**
      * Update the user's password.
      */
-    public function changePassword(ProfilePasswordUpdateRequest $request): RedirectResponse
+    public function changePassword(PasswordUpdateRequest $request): RedirectResponse
     {
         $data = $request->validated();
 
@@ -46,6 +67,6 @@ class ProfileController extends Controller
             'password' => Hash::make($data['new_password']),
         ]);
 
-        return Redirect::route('account.profile.edit')->with('status', 'Տվյալները հաջողությամբ պահպանված են');
+        return Redirect::route('account.profile.edit')->with('status', 'Saved successfully!');
     }
 }

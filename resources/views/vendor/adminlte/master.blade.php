@@ -35,6 +35,12 @@
         <link rel="stylesheet" href="{{ mix(config('adminlte.laravel_mix_css_path', 'css/app.css')) }}">
     @endif
 
+    <style>
+        .radio-group .input-group {
+            width: 20px;
+        }
+    </style>
+
     {{-- Extra Configured Plugins Stylesheets --}}
     @include('adminlte::plugins', ['type' => 'css'])
 

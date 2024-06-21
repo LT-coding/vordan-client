@@ -5,8 +5,9 @@ namespace App\Http\Requests\Account\User;
 use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules;
 
-class ProfileUpdateRequest extends FormRequest
+class AccountAddressRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -16,9 +17,12 @@ class ProfileUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'max:255'],
-            'lastname' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
+            'account_id' => ['required'],
+            'address' => ['required'],
+            'country' => ['required'],
+            'city' => ['required'],
+            'state' => ['required'],
+            'zip' => ['required'],
         ];
     }
 }

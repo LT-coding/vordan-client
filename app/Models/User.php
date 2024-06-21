@@ -5,8 +5,8 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Carbon\Carbon;
 use Illuminate\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -26,6 +26,8 @@ class User extends Authenticatable
         'email',
         'phone',
         'password',
+        'referral_code',
+        'referral_bonus'
     ];
 
     /**
@@ -51,6 +53,11 @@ class User extends Authenticatable
     public function account(): HasOne
     {
         return $this->hasOne(Account::class);
+    }
+
+    public function referrals(): HasMany
+    {
+        return $this->hasMany(UserReferral::class, 'referral_user_id', 'id');
     }
 
 //    public function favorites(): HasMany

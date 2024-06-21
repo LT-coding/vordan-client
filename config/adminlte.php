@@ -261,7 +261,7 @@ return [
     'password_reset_email_url' => '/reset-password',
     'password_email_url' => 'forgot-password',
     'profile_url' => 'account/profile',
-    'address_url' => 'account/address',
+    'address_url' => 'account/addresses',
 
     /*
     |--------------------------------------------------------------------------

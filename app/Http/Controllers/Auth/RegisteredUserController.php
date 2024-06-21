@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Account\User\UserRequest;
+use App\Http\Requests\Account\User\AccountRequest;
 use App\Models\Account;
-use App\Models\Referral;
+use App\Models\UserReferral;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -31,27 +31,26 @@ class RegisteredUserController extends Controller
      *
      * @throws ValidationException
      */
-    public function store(UserRequest $request): RedirectResponse
+    public function store(AccountRequest $request): RedirectResponse
     {
         $user = User::query()->create([
             'email' => $request->email,
             'phone' => $request->phone,
             'password' => Hash::make($request->password),
+            'referral_code' => Str::orderedUuid()
         ])->assignRole('account');
 
-        $account = Account::query()->create([
+        $user->account()->create([
             'user_id' => $user->id,
             'name' => $request->name,
-            'referral_code' => Str::orderedUuid()
         ]);
 
-        if ($request->referral && $rAccount = Account::query()->where('referral_code', $request->referral)->first()) {
-            Referral::query()->create([
-                'type' => 'account',
-                'account_id' => $account->id,
-                'invited_by_account_id' => $rAccount->id,
+        if ($request->referral && $rUser = User::query()->where('referral_code', $request->referral)->first()) {
+             UserReferral::query()->create([
+                 'referral_user_id' => $rUser->id,
+                 'user_id' => $user->id,
             ]);
-            $rAccount->update(['referral' => $rAccount->referral + 10]);
+            $rUser->update(['referral_bonus' => $rUser->referral_bonus + 10]);
         }
 
         if ($request->email) {
