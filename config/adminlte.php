@@ -187,7 +187,7 @@ return [
     */
 
     'classes_body' => '',
-    'classes_brand' => 'py-0',
+    'classes_brand' => 'py-1',
     'classes_brand_text' => '',
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
@@ -196,7 +196,7 @@ return [
     'classes_sidebar_nav' => '',
     'classes_topnav' => 'navbar-light py-0',
     'classes_topnav_nav' => 'navbar-expand-lg',
-    'classes_topnav_container' => 'container-fluid py-1',
+    'classes_topnav_container' => 'container py-1',
 
     /*
     |--------------------------------------------------------------------------
